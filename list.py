@@ -4,9 +4,13 @@ class Node():
         self.ref = None
 
 class List():
+    __count = 0
+
     def __init__(self):
         self.head = None
-        self.count = 0
+
+    def count(self):
+        return self.__count
 
     def append(self, value):
         new_node = Node(value)
@@ -19,7 +23,7 @@ class List():
                 node = node.ref
 
             node.ref = new_node
-        self.count+=1
+        self.__count+=1
 
     def add_begin(self, value):
         new_node = Node(value)
@@ -29,6 +33,8 @@ class List():
         else:
             new_node.ref = self.head
             self.head = new_node
+
+        self.__count+=1
 
     def add_after(self, value, after):
         new_node = Node(value)
