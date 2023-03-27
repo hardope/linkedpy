@@ -11,6 +11,10 @@ class List():
 
     def count(self):
         return self.__count
+    
+    def clear(self):
+        self.head == None
+        self.__count = 0
 
     def append(self, value):
         new_node = Node(value)
