@@ -6,6 +6,7 @@ class Node():
 class List():
     def __init__(self):
         self.head = None
+        self.count = 0
 
     def append(self, value):
         new_node = Node(value)
@@ -18,6 +19,7 @@ class List():
                 node = node.ref
 
             node.ref = new_node
+        self.count+=1
 
     def add_begin(self, value):
         new_node = Node(value)
