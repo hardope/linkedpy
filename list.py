@@ -13,7 +13,7 @@ class List():
         return self.__count
     
     def clear(self):
-        self.head == None
+        self.head = None
         self.__count = 0
 
     def append(self, value):
