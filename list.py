@@ -93,12 +93,12 @@ class List():
                     if a == self.__count - 1:
                         data+=f'"{node.value}"'
                     else:
-                        data+=f'"{node.value}" '
+                        data+=f'"{node.value}", '
                 else:
                     if a == self.__count - 1:
                         data+=f"{node.value}"
                     else:
-                        data+=f"{node.value} "
+                        data+=f"{node.value}, "
                 node = node.ref
                 a+=1
             data+= "]"
