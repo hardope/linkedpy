@@ -6,8 +6,11 @@ Implementation of Lists data type using Linked Lists
 ``` python
 from list import List
 
-# Initialize the list
+# Initialize the an empty list
 myList = List()
+
+# Initialize the list with values provided
+myList = List([1, 2, 3])
 
 # append Values to the list
 myList.append(1)
