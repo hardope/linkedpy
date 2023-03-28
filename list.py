@@ -9,8 +9,11 @@ class Node:
 class List:
     __count = 0
 
-    def __init__(self):
+    def __init__(self, initial=[]):
         self.head = None
+        if initial != []:
+            for value in initial:
+                self.append(value)
 
     def count(self):
         return self.__count
