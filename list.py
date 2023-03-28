@@ -20,6 +20,9 @@ class List:
         self.head = None
         self.__count = 0
 
+    def __len__(self):
+        return self.__count
+
     def append(self, value):
         new_node = Node(value)
 
@@ -32,34 +35,6 @@ class List:
 
             node.ref = new_node
         self.__count += 1
-
-    def add_begin(self, value):
-        new_node = Node(value)
-
-        if self.head == None:
-            self.head = new_node
-        else:
-            new_node.ref = self.head
-            self.head = new_node
-
-        self.__count += 1
-
-    def add_after(self, value, after):
-        new_node = Node(value)
-
-        if self.head == None:
-            print("Linked List does not contain any Nodes")
-
-        else:
-            node = self.head
-            while node.ref is not None:
-                if node.value == after:
-                    break
-                else:
-                    node = node.ref
-
-            new_node.ref = node.ref
-            node.ref = new_node
 
     def pop(self, index=None):
         if self.head == None:
@@ -92,7 +67,7 @@ class List:
                 i += 1
             out = node.ref.value
             node.ref = node.ref.ref
-            
+
         self.__count -= 1
 
         return out
