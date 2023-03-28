@@ -2,10 +2,28 @@
 
 Implementation of Lists data type using Linked Lists
 
-## Defined Methods
+### Usage
+``` python
+from list import List
 
-* append() : Appends to the end of a list
+# Initialize the list
+myList = List()
 
-* clear() : Delete all elements
+# append Values to the list
+myList.append(1)
+myList.append(2)
+myList.append(3)
 
-* count(): return number of values in list
+# remove and return element from end of list
+myList.pop()
+
+# remove and return element from start of list
+myList.pop(0)
+
+# return list length
+myList.count()
+
+# delete all elements from list
+myList.clear()
+
+```
