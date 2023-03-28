@@ -29,6 +29,9 @@ myList.count()
 # return list length
 len(myList)
 
+# return a copy of the list in this object format
+myList.copy()
+
 # delete all elements from list
 myList.clear()
 
