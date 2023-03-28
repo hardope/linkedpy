@@ -87,9 +87,20 @@ class List():
         else:
             node = self.head
             data = "["
+            a = 0
             while node is not None:
-                data+=f"{node.value} "
+                if isinstance(node.value, str):
+                    if a == self.__count - 1:
+                        data+=f'"{node.value}"'
+                    else:
+                        data+=f'"{node.value}" '
+                else:
+                    if a == self.__count - 1:
+                        data+=f"{node.value}"
+                    else:
+                        data+=f"{node.value} "
                 node = node.ref
+                a+=1
             data+= "]"
 
         return data
