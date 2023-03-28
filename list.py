@@ -31,6 +31,14 @@ class List:
             node = node.ref
         return new_list
 
+    def to_list(self):
+        out = []
+        node = self.head
+        while node is not None:
+            out.append(node.value)
+            node = node.ref
+        return out
+
     def append(self, value):
         new_node = Node(value)
 
