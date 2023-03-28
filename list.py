@@ -1,3 +1,5 @@
+import sys
+
 class Node:
     def __init__(self, value):
         self.value = value
@@ -60,7 +62,7 @@ class List:
 
     def pop(self, index=None):
         if self.head == None:
-            raise IndexError("Cannot remove Elemnet from an empty linked list")
+            raise IndexError("Cannot remove Elemenet from an empty list")
 
         if index == None:
             if self.head.ref == None:
@@ -76,6 +78,20 @@ class List:
             node = self.head
             out = node.value
             self.head = node.ref
+        else:
+            if index > self.__count - 1:
+                raise IndexError("Index out of range")
+            node = self.head
+            i = 0
+            while node.ref is not None:
+                if i + 1 == index:
+                    break
+                else:
+                    node = node.ref
+                i += 1
+            out = node.ref.value
+            node.ref = node.ref.ref
+            
         self.__count -= 1
 
         return out
