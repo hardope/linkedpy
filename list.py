@@ -1,9 +1,10 @@
-class Node():
+class Node:
     def __init__(self, value):
         self.value = value
         self.ref = None
 
-class List():
+
+class List:
     __count = 0
 
     def __init__(self):
@@ -11,7 +12,7 @@ class List():
 
     def count(self):
         return self.__count
-    
+
     def clear(self):
         self.head = None
         self.__count = 0
@@ -27,7 +28,7 @@ class List():
                 node = node.ref
 
             node.ref = new_node
-        self.__count+=1
+        self.__count += 1
 
     def add_begin(self, value):
         new_node = Node(value)
@@ -38,7 +39,7 @@ class List():
             new_node.ref = self.head
             self.head = new_node
 
-        self.__count+=1
+        self.__count += 1
 
     def add_after(self, value, after):
         new_node = Node(value)
@@ -56,30 +57,28 @@ class List():
 
             new_node.ref = node.ref
             node.ref = new_node
-            
-    def pop(self):
+
+    def pop(self, index=None):
         if self.head == None:
             raise IndexError("Cannot remove Elemnet from an empty linked list")
 
-        elif self.head.ref == None:
-            out = self.head.value
-            self.head = None
-        else:
+        if index == None:
+            if self.head.ref == None:
+                out = self.head.value
+                self.head = None
+            else:
+                node = self.head
+                while node.ref.ref is not None:
+                    node = node.ref
+                out = node.ref.value
+                node.ref = None
+        elif index == 0:
             node = self.head
-            while node.ref.ref is not None:
-                node = node.ref
-            out = node.ref.value
-            node.ref = None
+            out = node.value
+            self.head = node.ref
+        self.__count -= 1
 
         return out
-
-    def pop_start(self):
-        if self.head == None:
-            print("Linked List is empty")
-
-        else:
-            node = self.head
-            self.head = node.ref
 
     def __str__(self):
         if self.head == None:
@@ -91,16 +90,16 @@ class List():
             while node is not None:
                 if isinstance(node.value, str):
                     if a == self.__count - 1:
-                        data+=f'"{node.value}"'
+                        data += f'"{node.value}"'
                     else:
-                        data+=f'"{node.value}", '
+                        data += f'"{node.value}", '
                 else:
                     if a == self.__count - 1:
-                        data+=f"{node.value}"
+                        data += f"{node.value}"
                     else:
-                        data+=f"{node.value}, "
+                        data += f"{node.value}, "
                 node = node.ref
-                a+=1
-            data+= "]"
+                a += 1
+            data += "]"
 
         return data
