@@ -23,6 +23,14 @@ class List:
     def __len__(self):
         return self.__count
 
+    def copy(self):
+        new_list = List()
+        node = self.head
+        while node is not None:
+            new_list.append(node.value)
+            node = node.ref
+        return new_list
+
     def append(self, value):
         new_node = Node(value)
 
