@@ -26,4 +26,6 @@ myList.count()
 # delete all elements from list
 myList.clear()
 
+print(myList)
+
 ```
