@@ -17,8 +17,8 @@ myList.append(3)
 # remove and return element from end of list
 myList.pop()
 
-# remove and return element from start of list
-myList.pop(0)
+# remove and return element from index of 3
+myList.pop(3)
 
 # return list length
 myList.count()
