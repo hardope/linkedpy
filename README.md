@@ -32,6 +32,9 @@ len(myList)
 # return a copy of the list in this object format
 myList.copy()
 
+# return a copy of the list in default python list format
+myList.to_list()
+
 # delete all elements from list
 myList.clear()
 
