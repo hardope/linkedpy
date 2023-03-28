@@ -26,6 +26,9 @@ myList.pop(3)
 # return list length
 myList.count()
 
+# return list length
+len(myList)
+
 # delete all elements from list
 myList.clear()
 
