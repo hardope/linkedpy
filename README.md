@@ -6,7 +6,7 @@ Implementation of Lists data type using Linked Lists
 ``` python
 from list import List
 
-# Initialize the an empty list
+# Initialize an empty list
 myList = List()
 
 # Initialize the list with values provided
