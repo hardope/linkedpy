@@ -59,16 +59,19 @@ class List():
             
     def pop(self):
         if self.head == None:
-            print("Cannot remove Elemnet from an empty linked list")
+            raise IndexError("Cannot remove Elemnet from an empty linked list")
 
         elif self.head.ref == None:
+            out = self.head.value
             self.head = None
         else:
             node = self.head
             while node.ref.ref is not None:
                 node = node.ref
-
+            out = node.ref.value
             node.ref = None
+
+        return out
 
     def pop_start(self):
         if self.head == None:
@@ -80,7 +83,7 @@ class List():
 
     def __str__(self):
         if self.head == None:
-            return "Linked List Is Empty"
+            return "[]"
         else:
             node = self.head
             data = "["
