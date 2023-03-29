@@ -47,6 +47,9 @@ myList.insert(0, 1)
 # remove a specific element from the list
 myList.remove(3)
 
+# get the lowest index where an element appears
+myList.index(1)
+
 # delete all elements from list
 myList.clear()
 
