@@ -40,6 +40,13 @@ myList.extend([1, 2, 3])
 # extend list using the custom list object
 myList.extend(otherList.copy())
 
+# insert values into list at a specific index
+# syntax: myList.insert(index, value)
+myList.insert(0, 1)
+
+# remove a specific element from the list
+myList.remove(3)
+
 # delete all elements from list
 myList.clear()
 
