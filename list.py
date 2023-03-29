@@ -46,17 +46,24 @@ class List:
             self.append(value)
 
     def remove(self, value):
+        rem = False
         if self.head == None:
-            raise ValueError("Cannot remove Elemenet from an empty list")
+            raise ValueError("Cannot remove Element from an empty list")
         if value == self.head.value:
             self.head = self.head.ref
+            rem = True
         else:
             node = self.head
             while node.ref is not None:
                 if value == node.ref.value:
                     node.ref = node.ref.ref
+                    rem = True
                 else:
                     node = node.ref
+        if rem:
+            self.__count -= 1
+        else:
+            raise ValueError(f"{value} not in list")
 
     def append(self, value):
         new_node = Node(value)
@@ -73,7 +80,7 @@ class List:
 
     def pop(self, index=None):
         if self.head == None:
-            raise IndexError("Cannot remove Elemenet from an empty list")
+            raise IndexError("Cannot remove Element from an empty list")
 
         if index == None:
             if self.head.ref == None:
