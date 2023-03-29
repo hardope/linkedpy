@@ -65,6 +65,22 @@ class List:
         else:
             raise ValueError(f"{value} not in list")
 
+    def index(self, value):
+        if self.head == None:
+            raise ValueError("Cannot find Element in an empty list")
+        if value == self.head.value:
+            return 0
+        else:
+            node = self.head
+            i = 0
+            while node is not None:
+                if value == node.value:
+                    return i
+                else:
+                    i += 1
+                node = node.ref
+            raise ValueError(f"{value} not in list")
+
     def append(self, value):
         new_node = Node(value)
 
