@@ -45,6 +45,19 @@ class List:
         for value in values:
             self.append(value)
 
+    def remove(self, value):
+        if self.head == None:
+            raise ValueError("Cannot remove Elemenet from an empty list")
+        if value == self.head.value:
+            self.head = self.head.ref
+        else:
+            node = self.head
+            while node.ref is not None:
+                if value == node.ref.value:
+                    node.ref = node.ref.ref
+                else:
+                    node = node.ref
+
     def append(self, value):
         new_node = Node(value)
 
