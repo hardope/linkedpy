@@ -35,6 +35,11 @@ myList.copy()
 # return a copy of the list in default python list format
 myList.to_list()
 
+# extend a list using values from another list
+myList.extend([1, 2, 3])
+# extend list using the custom list object
+myList.extend(otherList.copy())
+
 # delete all elements from list
 myList.clear()
 
