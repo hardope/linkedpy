@@ -39,6 +39,12 @@ class List:
             node = node.ref
         return out
 
+    def extend(self, values=[]):
+        if values == []:
+            raise ValueError("Cannot extend empty list")
+        for value in values:
+            self.append(value)
+
     def append(self, value):
         new_node = Node(value)
 
