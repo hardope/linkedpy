@@ -78,6 +78,32 @@ class List:
             node.ref = new_node
         self.__count += 1
 
+    def insert(self, index, value):
+        if index == 0:
+            new_node = Node(value)
+            new_node.ref = self.head
+            self.head = new_node
+
+        elif index > self.__count - 1:
+            raise IndexError("Index out of range")
+        else:
+            new_node = Node(value)
+
+            if self.head == None:
+                self.head = new_node
+            else:
+                node = self.head
+                i = 0
+                while node.ref is not None:
+                    if i + 1 == index:
+                        break
+                    else:
+                        node = node.ref
+                    i += 1
+                new_node.ref = node.ref
+                node.ref = new_node
+        self.__count += 1
+
     def pop(self, index=None):
         if self.head == None:
             raise IndexError("Cannot remove Element from an empty list")
