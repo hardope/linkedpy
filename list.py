@@ -81,6 +81,21 @@ class List:
                 node = node.ref
             raise ValueError(f"{value} not in list")
 
+    def min(self):
+        if self.head == None:
+            raise ValueError("Empty list")
+        if self.head.ref == None:
+            return self.head.value
+        else:
+            minimum = self.head.value
+            node = self.head.ref
+            while node.ref is not None:
+                if minimum > node.ref.value:
+                    minimum = node.ref.value
+                node = node.ref
+
+        return minimum
+
     def append(self, value):
         new_node = Node(value)
 
