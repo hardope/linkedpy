@@ -96,6 +96,21 @@ class List:
 
         return minimum
 
+    def max(self):
+        if self.head == None:
+            raise ValueError("Empty list")
+        if self.head.ref == None:
+            return self.head.value
+        else:
+            maximum = self.head.value
+            node = self.head.ref
+            while node.ref is not None:
+                if maximum < node.ref.value:
+                    maximum = node.ref.value
+                node = node.ref
+
+        return maximum
+
     def append(self, value):
         new_node = Node(value)
 
