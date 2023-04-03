@@ -50,6 +50,12 @@ myList.remove(3)
 # get the lowest index where an element appears
 myList.index(1)
 
+# Return max value
+myList.max()
+
+# Return min Value
+myList.min()
+
 # delete all elements from list
 myList.clear()
 
