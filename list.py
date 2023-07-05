@@ -1,3 +1,4 @@
+# Class for a Node
 class Node:
     def __init__(self, value):
         self.value = value
