@@ -1,9 +1,4 @@
-# Class for a Node
-class Node:
-    def __init__(self, value):
-        self.value = value
-        self.ref = None
-
+from .node import Node
 
 class List:
     __count = 0
