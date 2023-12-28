@@ -7,6 +7,7 @@ setup(
     author_email="adeyeriopeoluwa05@gmail.com",
     url="https://github.com/hardope/MyList",
     description="Python implementation of a default List using linked list",
+    long_description=open("README.md").read(),
     packages=find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
