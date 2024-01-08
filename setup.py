@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setup(
-    name="mylinkedlist",
+    name="linkedpy",
     version="0.0.1",
     author="Opeoluwa Adeyeri",
     author_email="adeyeriopeoluwa05@gmail.com",
