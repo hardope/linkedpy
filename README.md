@@ -4,7 +4,7 @@ Implementation of Lists data type using Linked Lists
 
 ### Usage
 ``` python
-from list import List
+from linkedpy import List
 
 # Initialize an empty list
 myList = List()
