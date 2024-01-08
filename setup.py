@@ -13,8 +13,7 @@ setup(
     description="Python implementation of a default List using linked list",
     long_description=long_description,  # Use the content from README.md or another file
     long_description_content_type="text/markdown",  # Specify the type of content
-    package_dir={'': 'src'},
-    packages=find_packages(where='src'),
+    package_dir={'': 'linkedpy'},
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
