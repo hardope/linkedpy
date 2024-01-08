@@ -1,4 +1,4 @@
-# My_List
+# linkedpy
 
 Implementation of Lists data type using Linked Lists
 
