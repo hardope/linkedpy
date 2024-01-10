@@ -1,64 +1,60 @@
 # linkedpy
 
-Implementation of Lists data type using Linked Lists
+`linkedpy` is a simple linked list implementation in Python, providing a custom `List` class with various methods for managing linked list operations.
 
-### Usage
-``` python
+## Features
+
+- **Basic Operations:**
+  - `append(value)`: Add a value to the end of the list.
+  - `insert(index, value)`: Insert a value before the specified index.
+  - `remove(value)`: Remove the first occurrence of a value.
+  - `pop(index=None)`: Remove and return an item at a specified index (default is the last item).
+  - `clear()`: Remove all items from the list.
+
+- **Access and Indexing:**
+  - `__getitem__(index)`: Get the item at a specific index.
+  - `__setitem__(index, value)`: Set the item at a specific index.
+  - `__delitem__(index)`: Delete the item at a specific index.
+
+- **Information and Iteration:**
+  - `count()`: Return the number of items in the list.
+  - `__len__()`: Return the number of items in the list.
+  - `to_list()`: Return the list as a normal Python list.
+  - `__repr__()`: Return a string representation of the list.
+  - `__iter__()`: Iterate over values in the list.
+
+- **Concatenation:**
+  - `__add__(other)`: Concatenate two lists using the `+` operator.
+  - `__iadd__(other)`: In-place concatenation using the `+=` operator.
+
+- **Statistical Operations:**
+  - `min()`: Return the minimum value in the list.
+  - `max()`: Return the maximum value in the list.
+
+## Usage
+
+```python
 from linkedpy import List
 
-# Initialize an empty list
-myList = List()
+# Create a new list
+my_list = List(1, 2, 3)
 
-# Initialize the list with values provided
-myList = List([1, 2, 3])
+# Append values
+my_list.append(4)
+my_list.append(5)
 
-# append Values to the list
-myList.append(1)
-myList.append(2)
-myList.append(3)
+# Access elements
+print(my_list[2])  # Output: 3
 
-# remove and return element from end of list
-myList.pop()
+# Remove element
+my_list.remove(2)
 
-# remove and return element from index of 3
-myList.pop(3)
+# Iterate over the list
+for item in my_list:
+    print(item)
 
-# return list length
-myList.count()
+# Concatenate lists
+new_list = my_list + List(6, 7, 8)
 
-# return list length
-len(myList)
-
-# return a copy of the list in this object format
-myList.copy()
-
-# return a copy of the list in default python list format
-myList.to_list()
-
-# extend a list using values from another list
-myList.extend([1, 2, 3])
-# extend list using the custom list object
-myList.extend(otherList.copy())
-
-# insert values into list at a specific index
-# syntax: myList.insert(index, value)
-myList.insert(0, 1)
-
-# remove a specific element from the list
-myList.remove(3)
-
-# get the lowest index where an element appears
-myList.index(1)
-
-# Return max value
-myList.max()
-
-# Return min Value
-myList.min()
-
-# delete all elements from list
-myList.clear()
-
-print(myList)
-
-```
+# In-place concatenation
+my_list += List(9, 10)
