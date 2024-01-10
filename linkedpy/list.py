@@ -3,23 +3,32 @@ from .node import Node
 class List:
     __count = 0
 
-    def __init__(self, initial=[]):
+    def __init__(self, *args):
+
+        """Initialize list with optional iterable."""
         self.head = None
-        if initial != []:
-            for value in initial:
-                self.append(value)
+        for data in args:
+            self.append(data)
 
     def count(self):
+
+        """Return number of occurrences of value."""
         return self.__count
 
     def clear(self):
+
+        """Remove all items from list."""
         self.head = None
         self.__count = 0
 
     def __len__(self):
+
+        """Return number of items in list."""
         return self.__count
 
     def copy(self):
+
+        """Return a shallow copy of the list."""
         new_list = List()
         node = self.head
         while node is not None:
@@ -28,6 +37,8 @@ class List:
         return new_list
 
     def to_list(self):
+
+        """Return list as a normal list"""
         out = []
         node = self.head
         while node is not None:
@@ -35,13 +46,15 @@ class List:
             node = node.ref
         return out
 
-    def extend(self, values=[]):
-        if values == []:
-            raise ValueError("Cannot extend empty list")
-        for value in values:
-            self.append(value)
+    def extend(self, new_list):
+
+        """Extend list by appending elements from the iterable."""
+        
+        self.head = self.__add__(new_list).head
 
     def remove(self, value):
+
+        """Remove first occurrence of value."""
         rem = False
         if self.head == None:
             raise ValueError("Cannot remove Element from an empty list")
@@ -62,22 +75,14 @@ class List:
             raise ValueError(f"{value} not in list")
 
     def index(self, value):
-        if self.head == None:
-            raise ValueError("Cannot find Element in an empty list")
-        if value == self.head.value:
-            return 0
-        else:
-            node = self.head
-            i = 0
-            while node is not None:
-                if value == node.value:
-                    return i
-                else:
-                    i += 1
-                node = node.ref
-            raise ValueError(f"{value} not in list")
+
+        """Return index of value in list"""
+        
+        return self.__getitem__(value)
 
     def min(self):
+
+        """Return min value in list"""
         if self.head == None:
             raise ValueError("Empty list")
         if self.head.ref == None:
@@ -93,6 +98,8 @@ class List:
         return minimum
 
     def max(self):
+
+        """Return max value in list"""
         if self.head == None:
             raise ValueError("Empty list")
         if self.head.ref == None:
@@ -108,6 +115,8 @@ class List:
         return maximum
 
     def append(self, value):
+
+        """Append value to end of list."""
         new_node = Node(value)
 
         if self.head == None:
@@ -121,34 +130,19 @@ class List:
         self.__count += 1
 
     def insert(self, index, value):
-        if index == 0:
-            new_node = Node(value)
-            new_node.ref = self.head
-            self.head = new_node
-
-        elif index > self.__count - 1:
-            raise IndexError("Index out of range")
-        else:
-            new_node = Node(value)
-
-            if self.head == None:
-                self.head = new_node
-            else:
-                node = self.head
-                i = 0
-                while node.ref is not None:
-                    if i + 1 == index:
-                        break
-                    else:
-                        node = node.ref
-                    i += 1
-                new_node.ref = node.ref
-                node.ref = new_node
-        self.__count += 1
+        
+        """Insert value before index."""
+        
+        self.__setitem__(index, value)
 
     def pop(self, index=None):
+
+        """Remove and return item at index (default last)."""
         if self.head == None:
             raise IndexError("Cannot remove Element from an empty list")
+
+        if index < 0:
+            index += len(self)
 
         if index == None:
             if self.head.ref == None:
@@ -183,6 +177,8 @@ class List:
         return out
 
     def __str__(self):
+
+        """String representation of list"""
         if self.head == None:
             return "[]"
         else:
@@ -205,3 +201,122 @@ class List:
             data += "]"
 
         return data
+    
+    def __repr__(self):
+
+        """Representation of list"""
+
+        return f"List({self.to_list()})"
+    
+    def __iter__(self):
+
+        """Iterate over values in list"""
+
+        current = self.head
+        while current:
+            yield current.value
+            current = current.ref
+
+    def __getitem__(self, index):
+
+        """Get item at index"""
+        if not isinstance(index, int):
+            raise TypeError("Index must be an integer")
+        
+        # Handle negative indexing
+        if index < 0:
+            # Determine positive index equivalent for negative index
+            index += len(self)
+
+        current = self.head
+        for _ in range(index):
+            if current:
+                current = current.ref
+            else:
+                raise IndexError("Index out of range")
+
+        if current:
+            return current.value
+        else:
+            raise IndexError("Index out of range")
+
+    def __setitem__(self, index, value):
+
+        """Set item at index"""
+        if not isinstance(index, int):
+            raise TypeError("Index must be an integer")
+        
+        # Handle negative indexing
+        if index < 0:
+            # Determine positive index equivalent for negative index
+            index += len(self)
+
+        current = self.head
+        for _ in range(index):
+            if current:
+                current = current.ref
+            else:
+                raise IndexError("Index out of range")
+
+        if current:
+            current.value = value
+        else:
+            raise IndexError("Index out of range")
+        
+    def __delitem__(self, index):
+
+        """Delete item at index"""
+
+        if not isinstance(index, int):
+            raise TypeError("Index must be an integer")
+        
+        # Handle negative indexing
+        if index < 0:
+            # Determine positive index equivalent for negative index
+            index += len(self)
+
+        if index == 0:
+            self.head = self.head.ref
+        else:
+            current = self.head
+            for _ in range(index - 1):
+                if current:
+                    current = current.ref
+                else:
+                    raise IndexError("Index out of range")
+
+            if current:
+                current.ref = current.ref.ref
+            else:
+                raise IndexError("Index out of range")
+            
+    def __add__(self, other):
+
+        """Concatenation to allow for + operator"""
+
+        if not isinstance(other, List):
+            raise TypeError("Can only concatenate List to List")
+        
+        new_list = List()
+        node = self.head
+        while node:
+            new_list.append(node.value)
+            node = node.ref
+        node = other.head
+        while node:
+            new_list.append(node.value)
+            node = node.ref
+        return new_list
+    
+    def __iadd__(self, other):
+
+        """In-place concatenation to allow for += operator with normal lists on the right side"""
+
+        if not isinstance(other, List):
+            raise TypeError("Can only concatenate List to List")
+        
+        node = other.head
+        while node:
+            self.append(node.value)
+            node = node.ref
+        return self
