@@ -31,6 +31,10 @@
   - `min()`: Return the minimum value in the list.
   - `max()`: Return the maximum value in the list.
 
+- **Sorting:**
+  - `sort()`: Sort The list
+  - `sorted()`: Return Sorted copy List
+
 ## Usage
 
 ```python
@@ -58,3 +62,10 @@ new_list = my_list + List(6, 7, 8)
 
 # In-place concatenation
 my_list += List(9, 10)
+
+# Sorting
+
+my_list.sort()
+
+# Optional reverse argument
+my_list.sorted(reverse=True)
