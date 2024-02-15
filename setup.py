@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="linkedpy",
-    version="0.0.8",
+    version="0.0.9",
     author="Opeoluwa Adeyeri",
     author_email="adeyeriopeoluwa05@gmail.com",
     url="https://github.com/hardope/MyList",
