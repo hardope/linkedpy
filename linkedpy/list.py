@@ -223,9 +223,7 @@ class List:
         if not isinstance(index, int):
             raise TypeError("Index must be an integer")
         
-        # Handle negative indexing
         if index < 0:
-            # Determine positive index equivalent for negative index
             index += len(self)
 
         current = self.head
@@ -246,9 +244,7 @@ class List:
         if not isinstance(index, int):
             raise TypeError("Index must be an integer")
         
-        # Handle negative indexing
         if index < 0:
-            # Determine positive index equivalent for negative index
             index += len(self)
 
         current = self.head
@@ -270,9 +266,7 @@ class List:
         if not isinstance(index, int):
             raise TypeError("Index must be an integer")
         
-        # Handle negative indexing
         if index < 0:
-            # Determine positive index equivalent for negative index
             index += len(self)
 
         if index == 0:
