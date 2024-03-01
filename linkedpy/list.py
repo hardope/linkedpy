@@ -314,3 +314,29 @@ class List:
             self.append(node.value)
             node = node.ref
         return self
+    
+    def sort(self, reverse=False):
+
+        """Sort the list in place"""
+
+        if self.head is None:
+            return
+        
+        # Convert list to a normal list
+        out = self.to_list()
+        out.sort(reverse=reverse)
+        
+        # Clear the list
+        self.clear()
+        
+        # Add the sorted list to the list
+        for value in out:
+            self.append(value)
+
+        return self
+    
+    def sorted(self, reverse=False):
+
+        """Return a new sorted list"""
+
+        return self.copy().sort(reverse=reverse)
