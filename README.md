@@ -5,7 +5,7 @@
 ## Features
 
 - **Basic Operations:**
-  - `append(value)`: Add a value to the end of the list.
+  - `append(value)`: Add value to the end of the list.
   - `insert(index, value)`: Insert a value before the specified index.
   - `remove(value)`: Remove the first occurrence of a value.
   - `pop(index=None)`: Remove and return an item at a specified index (default is the last item).
